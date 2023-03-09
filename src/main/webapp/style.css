@@ -1,0 +1,12 @@
+h1 {
+    text-align: center;
+    color: #8400ff;
+}
+
+
+.testForm {
+    align-items: center;
+    width: 75%;
+    border: black solid 3px;
+    margin: 0 auto;
+}

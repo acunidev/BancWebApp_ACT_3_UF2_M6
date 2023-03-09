@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+
+  tomcat:
+    image: tomcat:10-jdk17-temurin
+    container_name: projecte-banc-tomcat
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    volumes:
+      - ./target/BancWebApp-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/BancWebApp-1.0-SNAPSHOT.war
+    environment:
+      - DB_URL=jdbc:mysql://db:3306/bancdb
+      - DB_USERNAME=root
+      - DB_PASSWORD=acuni
+
+  db:
+    image: mysql:8.0
+    container_name: projecte-banc-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: bancdb
+      MYSQL_ROOT_PASSWORD: acuni
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - "3306:3306"

@@ -1,0 +1,28 @@
+entity
+	cliente 1.
+		idFiscal
+		Nombre
+		email
+
+	cuenta	N
+		iban
+		saldo
+			@ManyToOne()
+    		private Client compteClient;
+
+
+primero haces el open de la sesion de hibernate
+
+para session.save	(persistes cliente porque dentro hay cuenta)
+	beingtrans
+	persist(cuenta)
+	commit
+
+para metodos de recuperar
+	session.find(cuenta.class,@id)
+	o create query
+	o @naturalId
+
+Solo una vez
+session.open
+session.close
